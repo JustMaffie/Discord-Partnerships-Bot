@@ -29,16 +29,18 @@ DEFAULTS = {
 	}
 }
 
-def initConfig():
+def initConfig(configLog=True):
 	dirs = [ "data" ]
 	for dirr in dirs:
 		if not os.path.exists(dirr):
-			print("DIRECTORY '{}' DOESN'T EXIST. CREATING...".format(dirr))
+			if configLog:
+				print("DIRECTORY '{}' DOESN'T EXIST. CREATING...".format(dirr))
 			os.mkdir(dirr)
 	storage = JSONDriver("data/config.json")
 	for key, value in DEFAULTS.items():
 		if not storage.get(key):
-			print("ADDING DEFAULT KEY `{}` TO THE CONFIG.JSON FILE".format(key))
+			if configLog:
+				print("ADDING DEFAULT KEY `{}` TO THE CONFIG.JSON FILE".format(key))
 			storage.set(key, value)
 
 	storage.save()

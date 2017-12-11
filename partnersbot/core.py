@@ -20,7 +20,7 @@ class CustomContext(commands.Context):
 # I'll just make it an auto sharded bot, in case someone is stupid enough to add this bot to 2500 servers
 class Bot(commands.AutoShardedBot):
 	def __init__(self, *args, **kwargs):
-		self.config = initConfig()
+		self.config = initConfig(kwargs.get("configLog", True))
 		self.logger = logging.getLogger("PartnersBot")
 		super(Bot, self).__init__(command_prefix=self.config.get('command_prefix'), *args, **kwargs)
 		self.description = "An instance of JustMaffie's Partnerships Discord Bot"

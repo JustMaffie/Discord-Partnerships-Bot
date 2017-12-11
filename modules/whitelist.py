@@ -13,6 +13,11 @@ class Whitelist:
             # Guild not whitelisted, leave it now
             await guild.leave()
             
+    async def on_ready(self):
+        for guild in self.bot.guilds:
+            # Why not call the function instead of copy the code
+            await self.on_guild_join(guild)
+            
     @commands.is_owner()
     @commands.group(aliases=['whitelist'])
     async def wh(self, ctx):
