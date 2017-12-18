@@ -48,9 +48,8 @@ class Bot(commands.AutoShardedBot):
 		_modules = [os.path.splitext(x)[0] for x in os.listdir("modules")]
 		modules = []
 		for module in _modules:
-			if not module in ['__pycache__', '__init__']:
-				if not module.startswith("_"):
-					modules.append("modules.{}".format(module))
+			if not module.startswith("_"):
+				modules.append("modules.{}".format(module))
 
 		for module in modules:
 			self.load_extension(module)
