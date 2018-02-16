@@ -26,3 +26,4 @@ ENV/
 config.json
 main.log
 Dockerfile
+docker-compose.yml
