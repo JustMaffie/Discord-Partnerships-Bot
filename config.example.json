@@ -18,5 +18,6 @@
 			"host": "redis",
 			"port": 6379
 	},
-	"whitelist": []
+	"whitelist": [],
+	"owners": [197322731115642880]
 }

@@ -11,6 +11,12 @@ import textwrap
 import traceback
 from contextlib import redirect_stdout
 
+def is_owner():
+    def check(ctx):
+        owners = ctx.bot.config.owners
+        return ctx.author.id in owners
+    return commands.check(check)
+commands.is_owner = is_owner
 class Owner:
 
 	def __init__(self, bot):
