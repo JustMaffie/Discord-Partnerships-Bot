@@ -25,3 +25,4 @@ ENV/
 # custom gitignore stuff, the rest is default github
 config.json
 main.log
+Dockerfile
