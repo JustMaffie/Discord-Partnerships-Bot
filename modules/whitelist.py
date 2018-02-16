@@ -9,9 +9,10 @@ class Whitelist:
         self.conn = bot.redis
         
     async def on_guild_join(self, guild):
-        if not self.conn.sismember(WHITELIST_KEY, guild.id):
+        if not self.conn.sismember(WHITELIST_KEY, guild.id) and not guild.id in self.bot.config.whitelist:
             # Guild not whitelisted, leave it now
             await guild.leave()
+            self.bot.logger.warn("LEAVING GUILD {}, NOT WHITELISTED".format(guild.id))
             
     async def on_ready(self):
         for guild in self.bot.guilds:
