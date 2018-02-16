@@ -4,7 +4,7 @@ Read LICENSE file
 import logging
 from discord.ext import commands
 import discord
-from .config import initConfig
+from .config import config_from_file
 import os
 import redis
 
@@ -20,13 +20,13 @@ class CustomContext(commands.Context):
 # I'll just make it an auto sharded bot, in case someone is stupid enough to add this bot to 2500 servers
 class Bot(commands.AutoShardedBot):
 	def __init__(self, *args, **kwargs):
-		self.config = initConfig(kwargs.get("configLog", True))
+		self.config = config_from_file("config.json")
 		self.logger = logging.getLogger("PartnersBot")
-		super(Bot, self).__init__(command_prefix=self.config.get('command_prefix'), *args, **kwargs)
+		super(Bot, self).__init__(command_prefix=self.config.command_prefix, *args, **kwargs)
 		self.description = "An instance of JustMaffie's Partnerships Discord Bot"
 		
 		# Configure redis
-		self.pool = redis.ConnectionPool(host=self.config.get("redis").get("host"), port=self.config.get("redis").get("port"), db=0)
+		self.pool = redis.ConnectionPool(host=self.config.redis.host, port=self.config.redis.port, db=0)
 		self.redis = redis.Redis(connection_pool=self.pool)
 
 	async def get_context(self, message, *, cls=CustomContext):
@@ -55,7 +55,7 @@ class Bot(commands.AutoShardedBot):
 			self.load_extension(module)
 
 	def run(self):
-		super().run(self.config.get("token"))
+		super().run(self.config.token)
 
 def make_bot(*args, **kwargs):
 	bot = Bot(*args, **kwargs)
@@ -81,6 +81,6 @@ def make_bot(*args, **kwargs):
 						   "Try again in {:.2f}s"
 						   "".format(error.retry_after))
 		else:
-			log.exception(type(error).__name__, exc_info=error)
+			bot.logger.exception(type(error).__name__, exc_info=error)
 
 	return bot

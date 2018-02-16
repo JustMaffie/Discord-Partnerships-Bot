@@ -2,6 +2,5 @@
 Read LICENSE file
 """
 
-from .storage import JSONDriver, StorageDriver
-from .config import initConfig
+from .config import config_from_file
 from .core import Bot, make_bot

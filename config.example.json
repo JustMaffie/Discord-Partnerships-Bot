@@ -1,0 +1,21 @@
+{
+	"token": "Insert Token Here",
+	"command_prefix": "!",
+	"questions": [
+		{
+			"question": "What is your server ID?",
+			"embed_title": "Server ID"
+		},{
+			"question": "What is your server name?",
+			"embed_title": "Server Name"
+		}
+	],
+	"output": 100000000000000,
+	"dm_only": false,
+	"apply_command_name": "apply",
+	"welcome_message": "Hello, welcome to this partnerships prompt.",
+	"redis": {
+			"host": "redis",
+			"port": 6379
+	}
+}

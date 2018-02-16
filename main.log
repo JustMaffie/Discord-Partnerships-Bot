@@ -1,0 +1,11 @@
+[INFO] [PartnersBot] [16/02/2018 15:24]: LOADING EXTENSION modules.events
+[INFO] [PartnersBot] [16/02/2018 15:24]: LOADING EXTENSION modules.owner
+[INFO] [PartnersBot] [16/02/2018 15:24]: LOADING EXTENSION modules.partnerships
+[INFO] [PartnersBot] [16/02/2018 15:24]: LOADING EXTENSION modules.events
+[INFO] [PartnersBot] [16/02/2018 15:24]: LOADING EXTENSION modules.owner
+[INFO] [PartnersBot] [16/02/2018 15:24]: LOADING EXTENSION modules.partnerships
+[INFO] [PartnersBot] [16/02/2018 15:24]: LOADING EXTENSION modules.whitelist
+[INFO] [PartnersBot] [16/02/2018 15:24]: UNLOADING EXTENSION modules.events
+[INFO] [PartnersBot] [16/02/2018 15:24]: UNLOADING EXTENSION modules.owner
+[INFO] [PartnersBot] [16/02/2018 15:24]: UNLOADING EXTENSION modules.partnerships
+[INFO] [PartnersBot] [16/02/2018 15:24]: UNLOADING EXTENSION modules.whitelist

@@ -7,7 +7,7 @@ import traceback
 import json
 
 def get_applycmdname():
-	with open("data/config.json") as f:
+	with open("config.json") as f:
 		ff = json.load(f)
 		return ff.get("apply_command_name", "apply")
 
@@ -15,12 +15,12 @@ class Partnerships:
 	def __init__(self, bot):
 		self.f = ["Thanks! ", "Alright! ", "Very well. "]
 		self.bot = bot
-		self.questions = bot.config.get("questions")
-		self.output = self.getOutput(bot.config.get("output"))
+		self.questions = bot.config.questions
+		self.output = self.getOutput(bot.config.output)
 		self.timeout = 60
 
 	async def on_ready(self):
-		self.output = self.getOutput(self.bot.config.get("output"))
+		self.output = self.getOutput(self.bot.config.output)
 
 	def getOutput(self, id):
 		output = self.bot.get_channel(id=id)
@@ -30,7 +30,7 @@ class Partnerships:
 	@commands.cooldown(1, 60*10, type=BucketType.user)
 	async def apply(self, ctx):
 		"""Start the interactive partner application prompt."""
-		if self.bot.config.get("dm_only"):
+		if self.bot.config.dm_only:
 			if not isinstance(ctx.message.channel, discord.DMChannel):
 				return
 		questions = self.questions
@@ -38,12 +38,12 @@ class Partnerships:
 		def check(m):
 			return m.author.id == ctx.message.author.id and m.channel.id == ctx.message.channel.id
 		embed = discord.Embed()
-		embed.color = discord.Color.blue()
+		embed.colour = discord.Color.blue()
 		embed.add_field(name="User info:", value="**User ID: **{}\n**Username: **{}".format(ctx.message.author.id, ctx.message.author.name))
 		embed.set_thumbnail(url=ctx.message.author.avatar_url)
 		for question in questions:
 			if first:
-				await ctx.send(self.bot.config.get('welcome_message')+question['question'])
+				await ctx.send(self.bot.config.welcome_message+question['question'])
 				try:
 					msg = await self.bot.wait_for("message", check=check, timeout=self.timeout)
 					embed.add_field(name=question['embed_title'], value=msg.content)
