@@ -7,6 +7,7 @@ import discord
 from .config import config_from_file
 import os
 import redis
+from .i18n import I18N
 
 class CustomContext(commands.Context):
 	async def send_help(self):
@@ -24,6 +25,7 @@ class Bot(commands.AutoShardedBot):
 		self.logger = logging.getLogger("PartnersBot")
 		super(Bot, self).__init__(command_prefix=self.config.command_prefix, *args, **kwargs)
 		self.description = "An instance of JustMaffie's Partnerships Discord Bot"
+		self._ = I18N(self)
 		
 		if self.config.redis.enabled:
 			# Configure redis
@@ -79,8 +81,7 @@ def make_bot(*args, **kwargs):
 			pass
 		elif isinstance(error, commands.CommandOnCooldown):
 			await ctx.send("This command is on cooldown. "
-						   "Try again in {:.2f}s"
-						   "".format(error.retry_after))
+						   "Try again in {:.2f}s".format(error.retry_after))
 		else:
 			bot.logger.exception(type(error).__name__, exc_info=error)
 

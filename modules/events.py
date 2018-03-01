@@ -7,7 +7,7 @@ class Events:
 
 	async def on_ready(self):
 		bot = self.bot
-		game = discord.Game(name="with partners")
+		game = discord.Game(name=bot._("PLAYING_STATUS_MESSAGE", "with partners"))
 		await bot.change_presence(status=discord.Status.idle, game=game)
 
 	async def on_ready(self):
