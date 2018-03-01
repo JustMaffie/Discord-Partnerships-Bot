@@ -16,7 +16,8 @@
 	"welcome_message": "Hello, welcome to this partnerships prompt.",
 	"redis": {
 			"host": "redis",
-			"port": 6379
+			"port": 6379,
+			"enabled": true
 	},
 	"whitelist": [],
 	"owners": [197322731115642880]

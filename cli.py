@@ -13,6 +13,9 @@ WHITELIST = "whitelist"
 @cli.command()
 @click.argument('guild')
 def whitelist(guild):
+    if not bot.config.redis.enabled:
+        click.echo("Redis is unavailable with this config.")
+        return
     redis = bot.redis
     try:
         guild = int(guild)

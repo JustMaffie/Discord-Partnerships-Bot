@@ -25,9 +25,10 @@ class Bot(commands.AutoShardedBot):
 		super(Bot, self).__init__(command_prefix=self.config.command_prefix, *args, **kwargs)
 		self.description = "An instance of JustMaffie's Partnerships Discord Bot"
 		
-		# Configure redis
-		self.pool = redis.ConnectionPool(host=self.config.redis.host, port=self.config.redis.port, db=0)
-		self.redis = redis.Redis(connection_pool=self.pool)
+		if self.config.redis.enabled:
+			# Configure redis
+			self.pool = redis.ConnectionPool(host=self.config.redis.host, port=self.config.redis.port, db=0)
+			self.redis = redis.Redis(connection_pool=self.pool)
 
 	async def get_context(self, message, *, cls=CustomContext):
 		return await super().get_context(message, cls=cls)
