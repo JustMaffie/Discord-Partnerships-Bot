@@ -13,7 +13,7 @@ def get_applycmdname():
 
 class Partnerships:
 	def __init__(self, bot):
-		self.f = ["Thanks! ", "Alright! ", "Very well. "]
+		self.f = [bot._("PARTNERSHIPS_THANKS", "Thanks! "), bot._("PARTNERSHIPS_ALRIGHT", "Alright! "), bot._("PARTNERSHIPS_VERY_WELL", "Very well. ")]
 		self.bot = bot
 		self.questions = bot.config.questions
 		self.output = self.getOutput(bot.config.output)
@@ -39,7 +39,7 @@ class Partnerships:
 			return m.author.id == ctx.message.author.id and m.channel.id == ctx.message.channel.id
 		embed = discord.Embed()
 		embed.colour = discord.Color.blue()
-		embed.add_field(name="User info:", value="**User ID: **{}\n**Username: **{}".format(ctx.message.author.id, ctx.message.author.name))
+		embed.add_field(name=self.bot._("PARTNERSHIPS_USER_INFO_TITLE", "User info:"), value=self.bot._("PARTNERSHIPS_USER_INFO_VALUE", "**User ID: **{}\n**Username: **{}").format(ctx.message.author.id, ctx.message.author.name))
 		embed.set_thumbnail(url=ctx.message.author.avatar_url)
 		for question in questions:
 			if first:
@@ -48,10 +48,10 @@ class Partnerships:
 					msg = await self.bot.wait_for("message", check=check, timeout=self.timeout)
 					embed.add_field(name=question['embed_title'], value=msg.content)
 				except asyncio.TimeoutError:
-					return await ctx.send("Well, then not :wave:")
+					return await ctx.send(self.bot._("PARTNERSHIPS_USER_INFO_CANCELLED", "Well, then not :wave:"))
 				except:
 					self.bot.logger.exception(traceback.format_exc())
-					return await ctx.send("Something went wrong... Please try again later.")
+					return await ctx.send(self.bot._("PARTNERSHIPS_UNKNOWN_ERROR", "Something went wrong... Please try again later."))
 				first = False
 			else:
 				await ctx.send(random.choice(self.f) + question['question'])
@@ -59,12 +59,12 @@ class Partnerships:
 					msg = await self.bot.wait_for("message", check=check, timeout=self.timeout)
 					embed.add_field(name=question['embed_title'], value=msg.content)
 				except asyncio.TimeoutError:
-					return await ctx.send("Well, then not :wave:")
+					return await ctx.send(self.bot._("PARTNERSHIPS_USER_INFO_CANCELLED", "Well, then not :wave:"))
 				except:
 					self.bot.logger.exception(traceback.format_exc())
-					return await ctx.send("Something went wrong... Please try again later.")	
+					return await ctx.send(self.bot._("PARTNERSHIPS_UNKNOWN_ERROR", "Something went wrong... Please try again later."))	
 		await self.output.send(embed=embed)
-		await ctx.send("Thanks for your application, it will be reviewed asap.")
+		await ctx.send(self.bot._("PARTNERSHIPS_SUBMITTED", "Thanks for your application, it will be reviewed asap."))
 
 def setup(bot):
 	cog = Partnerships(bot)

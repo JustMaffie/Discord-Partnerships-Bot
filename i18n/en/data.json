@@ -24,5 +24,11 @@
 	"PARTNERSHIPS_USER_INFO_VALUE": "**User ID:** {}\n**Username:** {}",
 	"PARTNERSHIPS_USER_INFO_CANCELLED": "Well, then not :wave:",
 	"PARTNERSHIPS_UNKNOWN_ERROR": "Something went wrong... Please try again later.",
-	"PARTNERSHIPS_THANKS": "Thanks for your application, it will be reviewed asap."
+	"PARTNERSHIPS_SUBMITTED": "Thanks for your application, it will be reviewed asap.",
+	"ABOUT_DPY_VERSION": "Discord.py Version",
+	"ABOUT_AUTHOR": "Author",
+	"ABOUT_BOT_LINK": "Bot link",
+	"ABOUT_INSTANCE_OWNED_BY": "Instance Owned By",
+	"ABOUT_BOT_TITLE": "About this bot",
+	"ABOUT_BOT_VALUE": "This bot is an instance of JustMaffie's Partnerships Bot, an open source discord bot to take some load off your shoulders."
 }

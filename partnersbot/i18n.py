@@ -12,13 +12,14 @@ class I18N:
 
 	def initialize(self):
 		if not os.path.exists("i18n/{}/data.json".format(self.lang)):
-			raise SyntaxError("The language '{}' isn't yet supported.".format(self.lang))
+			self.lang = "en"
+			return self.initialize()
 		self._translations = json.load(open('i18n/{}/data.json'.format(self.lang)))
 
 	def get(self, string, default):
 		if default == None:
 			default = string
 		result = self._translations.get(string, default)
-		if result == "":
+		if result is "":
 			return default
 		return result

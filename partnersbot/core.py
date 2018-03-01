@@ -22,10 +22,10 @@ class CustomContext(commands.Context):
 class Bot(commands.AutoShardedBot):
 	def __init__(self, *args, **kwargs):
 		self.config = config_from_file("config.json")
+		self._ = I18N(self)
 		self.logger = logging.getLogger("PartnersBot")
 		super(Bot, self).__init__(command_prefix=self.config.command_prefix, *args, **kwargs)
-		self.description = "An instance of JustMaffie's Partnerships Discord Bot"
-		self._ = I18N(self)
+		self.description = self._("BOT_DESCRIPTION", "An instance of JustMaffie's Partnerships Discord Bot")
 		
 		if self.config.redis.enabled:
 			# Configure redis
@@ -36,13 +36,13 @@ class Bot(commands.AutoShardedBot):
 		return await super().get_context(message, cls=cls)
 
 	def load_extension(self, name):
-		self.logger.info('LOADING EXTENSION {name}'.format(name=name))
+		self.logger.info(self._("LOADING_EXTENSION", 'LOADING EXTENSION {name}').format(name=name))
 		if not name.startswith("modules."):
 			name = "modules.{}".format(name)
 		return super().load_extension(name)
 
 	def unload_extension(self, name):
-		self.logger.info('UNLOADING EXTENSION {name}'.format(name=name))
+		self.logger.info(self._("UNLOADING_EXTENSION", 'UNLOADING EXTENSION {name}').format(name=name))
 		if not name.startswith("modules."):
 			name = "modules.{}".format(name)
 		return super().unload_extension(name)
@@ -71,7 +71,7 @@ def make_bot(*args, **kwargs):
 		elif isinstance(error, commands.BadArgument):
 			await ctx.send_help()
 		elif isinstance(error, commands.CommandInvokeError):
-			message = "Error in command '{}'.\n{}".format(ctx.command.qualified_name, error)
+			message = self._("ERROR_IN_COMMAND", "Error in command '{}'.\n{}").format(ctx.command.qualified_name, error)
 			await ctx.send("```{message}```".format(message=message))
 		elif isinstance(error, commands.CommandNotFound):
 			pass
@@ -80,8 +80,8 @@ def make_bot(*args, **kwargs):
 		elif isinstance(error, commands.NoPrivateMessage):
 			pass
 		elif isinstance(error, commands.CommandOnCooldown):
-			await ctx.send("This command is on cooldown. "
-						   "Try again in {:.2f}s".format(error.retry_after))
+			await ctx.send(self._("COMMAND_IN_COOLDOWN", "This command is on cooldown. "
+						   "Try again in {:.2f}s").format(error.retry_after))
 		else:
 			bot.logger.exception(type(error).__name__, exc_info=error)
 

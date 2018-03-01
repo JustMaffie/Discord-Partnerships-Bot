@@ -15,7 +15,7 @@ class Whitelist:
         if not self.conn.sismember(WHITELIST_KEY, guild.id) and not guild.id in self.bot.config.whitelist:
             # Guild not whitelisted, leave it now
             await guild.leave()
-            self.bot.logger.warn("LEAVING GUILD {}, NOT WHITELISTED".format(guild.id))
+            self.bot.logger.warn(self.bot._("GUILD_NOT_WHITELISTED", "LEAVING GUILD {}, NOT WHITELISTED").format(guild.id))
             
     async def on_ready(self):
         for guild in self.bot.guilds:
@@ -27,27 +27,27 @@ class Whitelist:
     async def wh(self, ctx):
         if ctx.invoked_subcommand is None:
             if not self.bot.config.redis.enabled:
-                return await ctx.send("Redis is unavailable with the current config.")
+                return await ctx.send(self.bot._("WHITELIST_REDIS_UNAVAILABLE", "Redis is unavailable with the current config."))
             await ctx.send_help()
             
     @commands.is_owner()
     @wh.command()
     async def add(self, ctx, *, guild_id:int):
         if not self.bot.config.redis.enabled:
-            return await ctx.send("Redis is unavailable with the current config.")
+            return await ctx.send(self.bot._("WHITELIST_REDIS_UNAVAILABLE", "Redis is unavailable with the current config."))
         if self.conn.sismember(WHITELIST_KEY, guild_id):
-            return await ctx.send("This guild is already whitelisted!")
+            return await ctx.send(self.bot._("WHITELIST_GUILD_ALREADY_WHITELISTED", "This guild is already whitelisted!"))
         try:
             self.conn.sadd(WHITELIST_KEY, guild_id)
-            return await ctx.send("Added this guild to the whitelist!")
+            return await ctx.send(self.bot._("WHITELIST_ADDED_GUILD_TO_WHITELIST", "Added this guild to the whitelist!"))
         except:
-            return await ctx.send("An unknown error occurred, is Redis still alive?")
+            return await ctx.send(self.bot._("WHITELIST_UNKNOWN_ERROR", "An unknown error occurred, is Redis still alive?"))
             
     @commands.is_owner()
     @wh.command()
     async def get(self, ctx):
         if not self.bot.config.redis.enabled:
-            return await ctx.send("Redis is unavailable with the current config.")
+            return await ctx.send(self.bot._("WHITELIST_REDIS_UNAVAILABLE", "Redis is unavailable with the current config."))
         _guilds = self.conn.smembers(WHITELIST_KEY)
         guilds = []
         for guild in _guilds:
@@ -58,14 +58,14 @@ class Whitelist:
     @wh.command()
     async def remove(self, ctx, *, guild_id:int):
         if not self.bot.config.redis.enabled:
-            return await ctx.send("Redis is unavailable with the current config.")
+            return await ctx.send(self.bot._("WHITELIST_REDIS_UNAVAILABLE", "Redis is unavailable with the current config."))
         if not self.conn.sismember(WHITELIST_KEY, guild_id):
-            return await ctx.send("This guild is not whitelisted!")
+            return await ctx.send(self.bot._("WHITELIST_GUILD_NOT_WHITELISTED", "This guild is not whitelisted!"))
         try:
             self.conn.srem(WHITELIST_KEY, guild_id)
-            return await ctx.send("Removed this guild from the whitelist!")
+            return await ctx.send(self.bot._("WHITELIST_GUILD_REMOVED_FROM_WHITELIST", "Removed this guild from the whitelist!"))
         except:
-            return await ctx.send("An unknown error occurred, is Redis still alive?")
+            return await ctx.send(self.bot._("WHITELIST_UNKNOWN_ERROR", "An unknown error occurred, is Redis still alive?"))
 
 def setup(bot):
     cog = Whitelist(bot)
