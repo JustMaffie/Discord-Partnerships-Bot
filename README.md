@@ -1,6 +1,6 @@
 <div align="center">
         <p><i><b>Discord Partnerships Bot</b></i></p>
-	<p><a href="https://discord.gg/hYtBNYM"><img src="https://discordapp.com/api/guilds/371635725671596033/embed.png" alt="" /></a><img src="https://img.shields.io/badge/python-3.6-brightgreen.svg" alt="python 3.6" /><a href="https://www.patreon.com/partnerships"><img alt="become a patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="20px"></a></p>
+	<p><a href="https://discord.gg/hYtBNYM" target="_blank"><img src="https://discordapp.com/api/guilds/371635725671596033/embed.png" alt="" /></a><img src="https://img.shields.io/badge/python-3.6-brightgreen.svg" alt="python 3.6" /><a href="https://www.patreon.com/partnerships" target="_blank"><img alt="become a patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="20px"></a><a title="Crowdin" target="_blank" href="https://crowdin.com/project/discord-partnerships-bot"><img src="https://d322cqt584bo4o.cloudfront.net/discord-partnerships-bot/localized.svg"></a></p>
 </div> 
 
 
@@ -10,19 +10,28 @@ Welcome to the Partnerships Bot FAQ!
  
 * The Bot is made in Python
 * Using more than 19 questions may break the bot.
-* It can be hosted on anyone OS with Python
+* It can be hosted on any OS with Python
 * It's for a single server, meaning if you want more applications you're going to have to host it on more than one instance.
-* You neeed python 3.6 or higher
+* You neeed python 3.5 or higher
  
-## Installation Instructions
+## Installation Instructions (Manual)
 1) Clone the git repository with `git clone https://github.com/JustMaffie/Discord-Partnerships-Bot partnersbot && cd partnersbot`
 2) Install the requirements with `python3.6 -m pip install --upgrade -r requirements.txt`
-3) Run the bot with `python3.6 bot.py`, it will generate the config file and exit
-4) Edit the config in `data/config.json` to your needs
-5) Now you can start a bot with `python3.6 bot.py`
+3) Copy the config with `cp config.example.json config.json` (`copy` command on Windows)
+4) Edit the `config.json`
+5) Now you can start the bot with `python3.6 bot.py`
+
+## Installation Instructions (Docker)
+1) Clone the git repository with `git clone https://github.com/JustMaffie/Discord-Partnerships-Bot partnersbot && cd partnersbot`
+2) Copy the config with `cp config.example.json config.json` (`copy` command on Windows)
+3) Edit the `config.json`
+4) Run the bot with `docker-compose up`, you can manually look at the logs now
+5) To run the bot in the background type `docker-compose up -d`
 
 ##### Please notice that on windows the commands may be different, you can join our support server if you need help
 
+# Translations
+Pull requests for translations won't be accepted, please go to [the Crowdin page](https://crowdin.com/project/discord-partnerships-bot) to translate!
 
 ## Terms
 * You may not remove the credit in the bot
