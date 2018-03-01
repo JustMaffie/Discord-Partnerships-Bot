@@ -17,11 +17,18 @@
 	"WHITELIST_UNKNOWN_ERROR": "Er is een onbekende fout opgetreden, leeft Redis nog?",
 	"WHITELIST_GUILD_NOT_WHITELISTED": "Deze guild is niet gewhitelist!",
 	"WHITELIST_GUILD_REMOVED_FROM_WHITELIST": "Guild verwijderd van de whitelist!",
-	"PARTNERSHIPS_THANKS": "Bedankt voor uw aanvraag, we zullen er zo snel mogelijk naar kijken.",
+	"PARTNERSHIPS_THANKS": "",
 	"PARTNERSHIPS_ALRIGHT": "Oke! ",
 	"PARTNERSHIPS_VERY_WELL": "Heel goed. ",
 	"PARTNERSHIPS_USER_INFO_TITLE": "Gebruikersinfo:",
 	"PARTNERSHIPS_USER_INFO_VALUE": "**Gebruikers ID:** {}\n**Gebruikersnaam:** {}",
 	"PARTNERSHIPS_USER_INFO_CANCELLED": "Nou, dan niet :wave:",
-	"PARTNERSHIPS_UNKNOWN_ERROR": "Er ging iets mis... Probeer het later weer."
+	"PARTNERSHIPS_UNKNOWN_ERROR": "Er ging iets mis... Probeer het later weer.",
+	"PARTNERSHIPS_SUBMITTED": "",
+	"ABOUT_DPY_VERSION": "",
+	"ABOUT_AUTHOR": "",
+	"ABOUT_BOT_LINK": "",
+	"ABOUT_INSTANCE_OWNED_BY": "",
+	"ABOUT_BOT_TITLE": "",
+	"ABOUT_BOT_VALUE": ""
 }
