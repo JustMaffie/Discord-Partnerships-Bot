@@ -28,11 +28,6 @@ Welcome to the Partnerships Bot FAQ!
 4) Run the bot with `docker-compose up`, you can manually look at the logs now
 5) To run the bot in the background type `docker-compose up -d`
 
-##### Please notice that on windows the commands may be different, you can join our support server if you need help
-
-# Translations
-Pull requests for translations won't be accepted, please go to [the Crowdin page](https://crowdin.com/project/discord-partnerships-bot) to translate!
-
 ## Terms
 * You may not remove the credit in the bot
 * You may not claim this bot as your own
@@ -43,3 +38,7 @@ https://discordapp.com/developers/applications/me/create
 Just invite the bot to your server through:
 https://discordapp.com/oauth2/authorize?client_id=12345678&scope=bot&permissions=66186303
 (Add the client ID where "12345678" is)
+
+
+# Translating
+Pull requests for translations won't be accepted, please go to [the Crowdin page](https://crowdin.com/project/discord-partnerships-bot) to translate!
