@@ -69,13 +69,13 @@ class Owner:
 	async def about(self, ctx):
 		embed = discord.Embed()
 		embed.color = discord.Colour.blue()
-		embed.add_field(name="Discord.py version", value=discord.__version__)
-		embed.add_field(name="Author", value="[JustMaffie](https://github.com/JustMaffie)")
-		embed.add_field(name="Bot link", value="[github.com/JustMaffie/Discord-Partnerships-Bot](https://github.com/JustMaffie/Discord-Partnerships-Bot)")
+		embed.add_field(name=self.bot._("ABOUT_DPY_VERSION", "Discord.py version"), value=discord.__version__)
+		embed.add_field(name=self.bot._("ABOUT_AUTHOR", "Author"), value="[JustMaffie](https://github.com/JustMaffie)")
+		embed.add_field(name=self.bot._("ABOUT_BOT_LINK", "Bot Link"), value="[github.com/JustMaffie/Discord-Partnerships-Bot](https://github.com/JustMaffie/Discord-Partnerships-Bot)")
 		if self.bot.owner:
 			owner = self.bot.owner.owner
-			embed.add_field(name="Instance Owned By", value="{}#{}".format(owner.name, owner.discriminator))
-		embed.add_field(name="About this bot", value="""This bot is an instance of JustMaffie's Partnerships Bot, an open source discord bot to take some load off your shoulders.""")
+			embed.add_field(name=self.bot._("ABOUT_INSTANCE_OWNED_BY", "Instance Owned By"), value="{}#{}".format(owner.name, owner.discriminator))
+		embed.add_field(name=self.bot._("ABOUT_BOT_TITLE", "About this bot"), value=self.bot._("ABOUT_BOT_VALUE", "This bot is an instance of JustMaffie's Partnerships Bot, an open source discord bot to take some load off your shoulders."))
 		return await ctx.send(embed=embed)
 
 	# Thanks danny
