@@ -14,6 +14,18 @@ Welcome to the Partnerships Bot FAQ!
 * It's for a single server, meaning if you want more applications you're going to have to host it on more than one instance.
 * You neeed python 3.5 or higher
  
+## Development Team
+Category            | People
+------------------- | --------------------------
+Lead Developer      | JustMaffie#0001 ([@JustMaffie](https://github.com/JustMaffie))
+
+## Translators
+Language | Name
+-------- | ----------------
+Dutch    | JustMaffie#0001
+Japanese | computerfreaker#4054
+Polish   | Fedox#5555
+
 ## Installation Instructions (Manual)
 1) Clone the git repository with `git clone https://github.com/JustMaffie/Discord-Partnerships-Bot partnersbot && cd partnersbot`
 2) Install the requirements with `python3.6 -m pip install --upgrade -r requirements.txt`
