@@ -1,6 +1,6 @@
 <div align="center">
         <p><i><b>Discord Partnerships Bot</b></i></p>
-	<p><a href="https://discord.gg/hYtBNYM"><img src="https://discordapp.com/api/guilds/371635725671596033/embed.png" alt="" /></a><img src="https://img.shields.io/badge/python-3.6-brightgreen.svg" alt="python 3.6" /><a href="https://www.patreon.com/partnerships"><img alt="become a patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="35px"></a></p>
+	<p><a href="https://discord.gg/hYtBNYM"><img src="https://discordapp.com/api/guilds/371635725671596033/embed.png" alt="" /></a><img src="https://img.shields.io/badge/python-3.6-brightgreen.svg" alt="python 3.6" /><a href="https://www.patreon.com/partnerships"><img alt="become a patron" src="https://c5.patreon.com/external/logo/become_a_patron_button.png" height="15px"></a></p>
 </div> 
 
 
