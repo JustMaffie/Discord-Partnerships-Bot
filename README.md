@@ -15,7 +15,7 @@ Welcome to the Partnerships Bot FAQ!
 * You neeed python 3.5 or higher
  
 ## Development Team
-Category            | People
+Role                | People
 ------------------- | --------------------------
 Lead Developer      | JustMaffie#0001 ([@JustMaffie](https://github.com/JustMaffie))
 
