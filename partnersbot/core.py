@@ -7,6 +7,7 @@ import discord
 from .config import config_from_file
 import os
 import redis
+from .i18n import I18N
 
 class CustomContext(commands.Context):
 	async def send_help(self):
@@ -21,25 +22,27 @@ class CustomContext(commands.Context):
 class Bot(commands.AutoShardedBot):
 	def __init__(self, *args, **kwargs):
 		self.config = config_from_file("config.json")
+		self._ = I18N(self)
 		self.logger = logging.getLogger("PartnersBot")
 		super(Bot, self).__init__(command_prefix=self.config.command_prefix, *args, **kwargs)
-		self.description = "An instance of JustMaffie's Partnerships Discord Bot"
+		self.description = self._("BOT_DESCRIPTION", "An instance of JustMaffie's Partnerships Discord Bot")
 		
-		# Configure redis
-		self.pool = redis.ConnectionPool(host=self.config.redis.host, port=self.config.redis.port, db=0)
-		self.redis = redis.Redis(connection_pool=self.pool)
+		if self.config.redis.enabled:
+			# Configure redis
+			self.pool = redis.ConnectionPool(host=self.config.redis.host, port=self.config.redis.port, db=0)
+			self.redis = redis.Redis(connection_pool=self.pool)
 
 	async def get_context(self, message, *, cls=CustomContext):
 		return await super().get_context(message, cls=cls)
 
 	def load_extension(self, name):
-		self.logger.info('LOADING EXTENSION {name}'.format(name=name))
+		self.logger.info(self._("LOADING_EXTENSION", 'LOADING EXTENSION {name}').format(name=name))
 		if not name.startswith("modules."):
 			name = "modules.{}".format(name)
 		return super().load_extension(name)
 
 	def unload_extension(self, name):
-		self.logger.info('UNLOADING EXTENSION {name}'.format(name=name))
+		self.logger.info(self._("UNLOADING_EXTENSION", 'UNLOADING EXTENSION {name}').format(name=name))
 		if not name.startswith("modules."):
 			name = "modules.{}".format(name)
 		return super().unload_extension(name)
@@ -68,7 +71,7 @@ def make_bot(*args, **kwargs):
 		elif isinstance(error, commands.BadArgument):
 			await ctx.send_help()
 		elif isinstance(error, commands.CommandInvokeError):
-			message = "Error in command '{}'.\n{}".format(ctx.command.qualified_name, error)
+			message = self._("ERROR_IN_COMMAND", "Error in command '{}'.\n{}").format(ctx.command.qualified_name, error)
 			await ctx.send("```{message}```".format(message=message))
 		elif isinstance(error, commands.CommandNotFound):
 			pass
@@ -77,9 +80,8 @@ def make_bot(*args, **kwargs):
 		elif isinstance(error, commands.NoPrivateMessage):
 			pass
 		elif isinstance(error, commands.CommandOnCooldown):
-			await ctx.send("This command is on cooldown. "
-						   "Try again in {:.2f}s"
-						   "".format(error.retry_after))
+			await ctx.send(self._("COMMAND_IN_COOLDOWN", "This command is on cooldown. "
+						   "Try again in {:.2f}s").format(error.retry_after))
 		else:
 			bot.logger.exception(type(error).__name__, exc_info=error)
 
