@@ -18,4 +18,7 @@ class I18N:
 	def get(self, string, default):
 		if default == None:
 			default = string
-		return self._translations.get(string, default)
+		result = self._translations.get(string, default)
+		if result == "":
+			return default
+		return result
