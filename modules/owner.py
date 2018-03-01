@@ -64,7 +64,6 @@ class Owner:
 			return await ctx.send("An error occurred while loading {module}\n{e}".format(module=module,e=e))
 		return await ctx.send("Module {module} loaded successfully".format(module=module))
 
-	@commands.is_owner()
 	@commands.command()
 	async def about(self, ctx):
 		embed = discord.Embed()
