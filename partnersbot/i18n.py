@@ -14,7 +14,7 @@ class I18N:
 		if not os.path.exists("i18n/{}/data.json".format(self.lang)):
 			self.lang = "en"
 			return self.initialize()
-		self._translations = json.load(open('i18n/{}/data.json'.format(self.lang)))
+		self._translations = json.load(open('i18n/{}/data.json'.format(self.lang), encoding="utf8"))
 
 	def get(self, string, default):
 		if default == None:
