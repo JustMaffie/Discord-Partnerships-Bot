@@ -19,10 +19,10 @@ class CustomContext(commands.Context):
 
 # I'll just make it an auto sharded bot, in case someone is stupid enough to add this bot to 2500 servers
 class Bot(commands.AutoShardedBot):
-	def __init__(self, *args, **kwargs):
+	def __init__(self, logger, *args, **kwargs):
 		self.config = config_from_file("config.json")
 		self._ = I18N(self)
-		self.logger = logging.getLogger("PartnersBot")
+		self.logger = logger
 		self.mongo = None
 		self.db = None
 		super(Bot, self).__init__(command_prefix=self.config.command_prefix, *args, **kwargs)
@@ -31,6 +31,9 @@ class Bot(commands.AutoShardedBot):
 			self.mongo = motor.motor_asyncio.AsyncIOMotorClient(host=self.config.database.host, port=self.config.database.port, io_loop=self.loop)
 			self.db = self.mongo[self.config.database.database]
 		self.description = self._("BOT_DESCRIPTION", "An instance of JustMaffie's Partnerships Discord Bot")
+
+	def reload_config(self):
+		self.config = config_from_file("config.json")
 
 	async def get_context(self, message, *, cls=CustomContext):
 		return await super().get_context(message, cls=cls)
@@ -60,8 +63,8 @@ class Bot(commands.AutoShardedBot):
 	def run(self):
 		super().run(self.config.token)
 
-def make_bot(*args, **kwargs):
-	bot = Bot(*args, **kwargs)
+def make_bot(logger, *args, **kwargs):
+	bot = Bot(logger, *args, **kwargs)
 	bot.load_all_extensions()
 
 	@bot.event

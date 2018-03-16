@@ -13,6 +13,7 @@
 	"output": 100000000000000,
 	"dm_only": false,
 	"apply_command_name": "apply",
+	"apply_command_cooldown": 300,
 	"welcome_message": "Hello, welcome to this partnerships prompt. ",
 	"whitelist": [],
 	"owners": [197322731115642880],
