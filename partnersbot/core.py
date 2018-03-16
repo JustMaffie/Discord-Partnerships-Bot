@@ -7,6 +7,7 @@ import discord
 from .config import config_from_file
 import os
 from .i18n import I18N
+from .applications import ApplicationManager
 
 class CustomContext(commands.Context):
 	async def send_help(self):
@@ -72,6 +73,7 @@ def make_bot(logger, *args, **kwargs):
 		if bot.db:
 			if bot.config.database.auth.enabled:
 				await bot.db.authenticate(bot.config.database.auth.username, bot.config.database.auth.password)
+			bot.manager = ApplicationManager(bot)
 
 	@bot.event
 	async def on_command_error(ctx, error):
