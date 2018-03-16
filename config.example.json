@@ -14,12 +14,18 @@
 	"dm_only": false,
 	"apply_command_name": "apply",
 	"welcome_message": "Hello, welcome to this partnerships prompt. ",
-	"redis": {
-			"host": "redis",
-			"port": 6379,
-			"enabled": true
-	},
 	"whitelist": [],
 	"owners": [197322731115642880],
-	"language": "en"
+	"language": "en",
+	"database": {
+		"enabled": true,
+		"host": "localhost",
+		"port": 27017,
+		"database": "partners",
+		"auth": {
+			"enabled": false,
+			"username": "",
+			"password": ""
+		}
+	}
 }

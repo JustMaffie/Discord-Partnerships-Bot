@@ -5,6 +5,7 @@ from discord.ext.commands.cooldowns import BucketType
 import random
 import traceback
 import json
+import datetime
 
 def get_applycmdname():
 	with open("config.json") as f:
@@ -18,6 +19,7 @@ class Partnerships:
 		self.questions = bot.config.questions
 		self.output = self.getOutput(bot.config.output)
 		self.timeout = 60
+		self.db = None
 
 	async def on_ready(self):
 		self.output = self.getOutput(self.bot.config.output)
@@ -37,9 +39,10 @@ class Partnerships:
 		first = True
 		def check(m):
 			return m.author.id == ctx.message.author.id and m.channel.id == ctx.message.channel.id
-		embed = discord.Embed()
+		embed = discord.Embed(timestamp=datetime.datetime.utcnow())
 		embed.colour = discord.Color.blue()
-		embed.add_field(name=self.bot._("PARTNERSHIPS_USER_INFO_TITLE", "User info:"), value=self.bot._("PARTNERSHIPS_USER_INFO_VALUE", "**User ID: **{}\n**Username: **{}").format(ctx.message.author.id, ctx.message.author.name))
+		embed.set_author(name=str(ctx.author), icon_url=ctx.author.avatar_url)
+		embed.set_footer(text="User ID: {}".format(ctx.author.id))
 		embed.set_thumbnail(url=ctx.message.author.avatar_url)
 		for question in questions:
 			if first:
