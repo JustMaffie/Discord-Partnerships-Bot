@@ -25,6 +25,8 @@ Language | Name
 Dutch    | JustMaffie#0001
 Japanese | computerfreaker#4054
 Polish   | Fedox#5555
+Turkish  | Lizcrave#6189
+Arabic   | Dramex#0001
 
 ## Installation Instructions (Manual)
 1) Clone the git repository with `git clone https://github.com/JustMaffie/Discord-Partnerships-Bot partnersbot && cd partnersbot`

@@ -10,6 +10,7 @@ import io
 import textwrap
 import traceback
 from contextlib import redirect_stdout
+from partnersbot.module import Module
 
 def is_owner():
     def check(ctx):
@@ -17,11 +18,8 @@ def is_owner():
         return ctx.author.id in owners
     return commands.check(check)
 commands.is_owner = is_owner
-class Owner:
 
-	def __init__(self, bot):
-		self.bot = bot
-
+class Owner(Module):
 	def cleanup_code(self, content):
 		if content.startswith('```') and content.endswith('```'):
 			return '\n'.join(content.split('\n')[1:-1])
@@ -40,7 +38,7 @@ class Owner:
 			self.bot.load_extension(module)
 		except Exception as e:
 			await ctx.send("An error occurred while reloading {module}\n``{e}``".format(module=module,e=e))
-			self.bot.logger.exception(traceback.format_exc)
+			self.logger.exception(traceback.format_exc)
 		else:
 			await ctx.send("Module {module} reloaded successfully".format(module=module))
 
@@ -67,14 +65,14 @@ class Owner:
 	@commands.command()
 	async def about(self, ctx):
 		embed = discord.Embed()
-		embed.color = discord.Colour.blue()
-		embed.add_field(name=self.bot._("ABOUT_DPY_VERSION", "Discord.py version"), value=discord.__version__)
-		embed.add_field(name=self.bot._("ABOUT_AUTHOR", "Author"), value="[JustMaffie](https://github.com/JustMaffie)")
-		embed.add_field(name=self.bot._("ABOUT_BOT_LINK", "Bot Link"), value="[github.com/JustMaffie/Discord-Partnerships-Bot](https://github.com/JustMaffie/Discord-Partnerships-Bot)")
+		embed.colour = discord.Colour.blue()
+		embed.add_field(name=self._("ABOUT_DPY_VERSION", "Discord.py version"), value=discord.__version__)
+		embed.add_field(name=self._("ABOUT_AUTHOR", "Author"), value="[JustMaffie](https://github.com/JustMaffie)")
+		embed.add_field(name=self._("ABOUT_BOT_LINK", "Bot Link"), value="[github.com/JustMaffie/Discord-Partnerships-Bot](https://github.com/JustMaffie/Discord-Partnerships-Bot)")
 		if self.bot.owner:
 			owner = self.bot.owner.owner
-			embed.add_field(name=self.bot._("ABOUT_INSTANCE_OWNED_BY", "Instance Owned By"), value="{}#{}".format(owner.name, owner.discriminator))
-		embed.add_field(name=self.bot._("ABOUT_BOT_TITLE", "About this bot"), value=self.bot._("ABOUT_BOT_VALUE", "This bot is an instance of JustMaffie's Partnerships Bot, an open source discord bot to take some load off your shoulders."))
+			embed.add_field(name=self._("ABOUT_INSTANCE_OWNED_BY", "Instance Owned By"), value="{}#{}".format(owner.name, owner.discriminator))
+		embed.add_field(name=self._("ABOUT_BOT_TITLE", "About this bot"), value=self._("ABOUT_BOT_VALUE", "This bot is an instance of JustMaffie's Partnerships Bot, an open source discord bot to take some load off your shoulders."))
 		return await ctx.send(embed=embed)
 
 	# Thanks danny
