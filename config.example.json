@@ -4,10 +4,12 @@
 	"questions": [
 		{
 			"question": "What is your server ID?",
-			"embed_title": "Server ID"
+			"embed_title": "Server ID",
+			"id": "server_id"
 		},{
 			"question": "What is your server name?",
-			"embed_title": "Server Name"
+			"embed_title": "Server Name",
+			"id": "server_name"
 		}
 	],
 	"output": 100000000000000,
