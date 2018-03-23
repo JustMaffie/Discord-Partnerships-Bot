@@ -14,6 +14,8 @@
 	"PARTNERSHIPS_THANKS": "ありがとう！ ",
 	"PARTNERSHIPS_ALRIGHT": "大丈夫! ",
 	"PARTNERSHIPS_VERY_WELL": "結構! ",
+	"PARTNERSHIPS_USER_INFO_TITLE": "ユーザー情報:",
+	"PARTNERSHIPS_USER_INFO_VALUE": "* * ユーザー ID: * * {} * * ユーザー名: * * {}",
 	"PARTNERSHIPS_USER_INFO_CANCELLED": "さて、そうではありません :wave:",
 	"PARTNERSHIPS_UNKNOWN_ERROR": "何かが間違っています。後でもう一度試してください",
 	"PARTNERSHIPS_SUBMITTED": "あなたのアプリケーションのおかげで、それはできるだけ早くレビューされます。",
