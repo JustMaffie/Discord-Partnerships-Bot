@@ -1,5 +1,6 @@
 import discord
 from partnersbot.module import Module
+from partnersbot.applications import ApplicationManager
 
 class Events(Module):
 	def __init__(self, bot):
@@ -8,7 +9,7 @@ class Events(Module):
 
 	async def on_ready(self):
 		game = discord.Game(name=self._("PLAYING_STATUS_MESSAGE", "with partners"))
-		await self.bot.change_presence(status=discord.Status.idle, game=game)
+		await self.bot.change_presence(status=discord.Status.idle, activity=game)
 		info = [
 			str(self.bot.user),
 			self._("STARTUP_MESSAGE_DPY_VERSION", "Discord.py version: {}").format(discord.__version__),
@@ -21,6 +22,7 @@ class Events(Module):
 		for f in info:
 			self.logger.info(f)
 		self.bot.owner = await self.bot.application_info()
+		self.bot.manager = ApplicationManager(self.bot)
 		for guild in self.bot.guilds:
             # Why not call the function instead of copy the code
 			await self.on_guild_join(guild)

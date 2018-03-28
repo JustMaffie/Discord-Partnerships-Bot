@@ -13,7 +13,7 @@ Welcome to the Partnerships Bot FAQ!
 * It can be hosted on any OS with Python
 * It's for a single server, meaning if you want more applications you're going to have to host it on more than one instance.
 * You need python 3.5 or higher
- 
+
 ## Development Team
 Role                | People
 ------------------- | --------------------------

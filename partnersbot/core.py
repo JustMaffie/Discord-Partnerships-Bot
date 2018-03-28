@@ -7,7 +7,6 @@ import discord
 from .config import config_from_file
 import os
 from .i18n import I18N
-from .applications import ApplicationManager
 
 class CustomContext(commands.Context):
 	async def send_help(self):
@@ -62,7 +61,7 @@ class Bot(commands.AutoShardedBot):
 			self.load_extension(module)
 
 	def run(self):
-		super().run(self.config.token)
+		super().run(os.environ.get("TOKEN", self.config.token))
 
 def make_bot(logger, *args, **kwargs):
 	bot = Bot(logger, *args, **kwargs)
@@ -73,8 +72,7 @@ def make_bot(logger, *args, **kwargs):
 		if bot.db:
 			if bot.config.database.auth.enabled:
 				await bot.db.authenticate(bot.config.database.auth.username, bot.config.database.auth.password)
-			bot.manager = ApplicationManager(bot)
-
+				
 	@bot.event
 	async def on_command_error(ctx, error):
 		if isinstance(error, commands.MissingRequiredArgument):
@@ -83,6 +81,7 @@ def make_bot(logger, *args, **kwargs):
 			await ctx.send_help()
 		elif isinstance(error, commands.CommandInvokeError):
 			message = bot._("ERROR_IN_COMMAND", "Error in command '{}'.\n{}").format(ctx.command.qualified_name, error)
+			bot.logger.exception(error.original)
 			await ctx.send("```{message}```".format(message=message))
 		elif isinstance(error, commands.CommandNotFound):
 			pass

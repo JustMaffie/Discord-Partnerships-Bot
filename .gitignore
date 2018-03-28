@@ -1,23 +1,10 @@
-# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
-
-# C extensions
 *.so
-
-# Installer logs
 pip-log.txt
 pip-delete-this-directory.txt
-
-# Translations
-*.mo
-*.pot
-
-# dotenv
 .env
-
-# virtualenv
 .venv
 venv/
 ENV/
@@ -25,5 +12,3 @@ ENV/
 # custom gitignore stuff, the rest is default github
 config.json
 main.log
-Dockerfile
-docker-compose.yml

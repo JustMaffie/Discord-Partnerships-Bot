@@ -4,21 +4,23 @@
 	"questions": [
 		{
 			"question": "What is your server ID?",
-			"embed_title": "Server ID",
-			"id": "server_id"
+			"embed_title": "Server ID"
 		},{
 			"question": "What is your server name?",
-			"embed_title": "Server Name",
-			"id": "server_name"
+			"embed_title": "Server Name"
 		}
 	],
+	"apply_command": {
+		"name": "apply",
+		"cooldown": 300,
+		"timeout": 60
+	},
 	"output": 100000000000000,
 	"dm_only": false,
-	"apply_command_name": "apply",
-	"apply_command_cooldown": 300,
 	"welcome_message": "Hello, welcome to this partnerships prompt. ",
 	"whitelist": [],
 	"owners": [197322731115642880],
+	"admins": [197322731115642880],
 	"language": "en",
 	"database": {
 		"enabled": true,
