@@ -1,7 +1,7 @@
 {
 	"PLAYING_STATUS_MESSAGE": "مع اصحابي",
 	"STARTUP_MESSAGE_DPY_VERSION": "اصدار Discord.py: {}",
-	"STARTUP_MESSAGE_SHARD_AMOUNT": "",
+	"STARTUP_MESSAGE_SHARD_AMOUNT": "الأجزاء: {}",
 	"STARTUP_MESSAGE_GUILD_AMOUNT": "السيرفرات: {}",
 	"STARTUP_MESSAGE_USER_AMOUNT": "المستخدمين: {}",
 	"STARTUP_MESSAGE_COMMAND_MODULE_DATA": "{} اضافات مع {} اوامر",
