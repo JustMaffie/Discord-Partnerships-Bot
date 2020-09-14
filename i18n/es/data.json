@@ -1,8 +1,6 @@
 {
 	"PLAYING_STATUS_MESSAGE": "con socios",
 	"STARTUP_MESSAGE_DPY_VERSION": "Versión de Discord.py: {}",
-	"STARTUP_MESSAGE_SHARD_AMOUNT": "",
-	"STARTUP_MESSAGE_GUILD_AMOUNT": "",
 	"STARTUP_MESSAGE_USER_AMOUNT": "Usuarios: {}",
 	"STARTUP_MESSAGE_COMMAND_MODULE_DATA": "{} módulos con {} comandos",
 	"BOT_DESCRIPTION": "Una instancia de JustMaffie's Partnerships Discord Bot",
